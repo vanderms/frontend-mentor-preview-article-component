@@ -3,6 +3,18 @@ $desaturated-dark-blue: hsl(214, 17%, 51%);
 $grayish-blue: hsl(212, 23%, 69%);
 $light-grayish-blue: hsl(210, 46%, 95%);
 
+
+
+@function rem($px) {
+  $html-font-size: 16;
+  @return #{$px / $html-font-size}rem;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
 *,
 *::before,
 *::after {
@@ -13,9 +25,9 @@ $light-grayish-blue: hsl(210, 46%, 95%);
 }
 
 .attribution {
-  font-size: 12px;
+  font-size: rem(13);
   text-align: center;
-  height: 40px;
+  height: rem(40);
   color: white;
   background-color: rgb(15, 15, 15);
   display: flex;
@@ -24,4 +36,149 @@ $light-grayish-blue: hsl(210, 46%, 95%);
 }
 .attribution a {
   color: hsl(229, 33%, 83%);
+}
+
+main {
+  display: flex;
+  @include size(100%, 100vh);
+  min-height: rem(484);
+  justify-content: center;
+  align-items: center;
+  background-color: $light-grayish-blue;
+}
+
+.card {
+  @include size(rem(732), rem(284));
+  display: grid;
+  grid-template-columns: rem(284) 1fr;
+  border-radius: 12px;
+  background-color: white;
+
+
+  .thumbnail {
+    @include size(rem(284), rem(284));
+    object-fit: cover;
+    object-position: left top;
+    border-radius: 12px 0px 0px 12px;
+  }
+
+  .content{
+    padding: rem(36) rem(40) 0 rem(36);    
+  }
+
+  h1{
+    color: $very-dark-grayish-blue;
+    font-size: rem(20);
+    font-weight: 700;
+    line-height: 1.35;
+  }
+
+  p{
+    color: $desaturated-dark-blue;
+    font-size: rem(13);
+    line-height: 1.5;
+    font-weight: 500;
+    margin-top: rem(15);
+  }
+
+  .author-and-share{
+    @include size(100%, rem(40));
+    margin-top: rem(20);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .author{
+    display: flex;
+    gap: rem(14);
+  }
+
+  .author .avatar{
+    @include size(rem(40), auto);
+    border-radius: 50%;  
+  }
+
+  .author .name{
+    font-size: rem(13);
+    color: $very-dark-grayish-blue;
+    font-weight: 700;
+  }
+
+  .author .date{
+    font-size: rem(13);
+    font-weight: 500;
+    color: $desaturated-dark-blue;
+  }
+
+  .share{
+    position: relative;
+  }
+
+  .share .share-button{    
+    border: none;
+    @include size(rem(34), rem(34));
+    border-radius: 50%;
+    cursor: pointer;
+  }
+
+  .share .share-button.active{
+    background-color: #6E8098;
+    path {
+      fill: white;
+    }   
+  }
+
+  .share .pop-over-modal{
+    display: none;
+  }
+
+  .share .pop-over-modal.active{
+    display: block;
+    position: absolute;   
+    @include size(rem(248), rem(56)); 
+    bottom: rem(62);
+    left: -#{rem(107)};    
+
+    .pop-over-backdrop{
+      position: fixed;
+      top: 0;
+      left: 0;
+      @include size(100%, 100vh);
+      background-color: transparent;   
+      z-index: 1;  
+    }
+
+    .pop-over{
+      @include size(100%, 100%);
+      border-radius: 12px;
+      background-color: $very-dark-grayish-blue;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: rem(14);
+      position: relative;
+      z-index: 2;
+
+      .text{
+        text-transform: uppercase;
+        color: $grayish-blue;
+        font-weight: 500;
+        font-size: rem(13);
+        letter-spacing: rem(4);
+        margin-right: rem(4);
+      }
+
+      .triangle{
+        position: absolute;
+        background-color: $very-dark-grayish-blue;
+        transform: rotate(45deg);
+        @include size(rem(17), rem(17));       
+        bottom: -#{rem(8.5)};
+      }
+
+    }
+
+  }
+
 }
