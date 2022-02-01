@@ -1,0 +1,27 @@
+$very-dark-grayish-blue: hsl(217, 19%, 35%);
+$desaturated-dark-blue: hsl(214, 17%, 51%);
+$grayish-blue: hsl(212, 23%, 69%);
+$light-grayish-blue: hsl(210, 46%, 95%);
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Manrope', sans-serif;
+}
+
+.attribution {
+  font-size: 12px;
+  text-align: center;
+  height: 40px;
+  color: white;
+  background-color: rgb(15, 15, 15);
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.attribution a {
+  color: hsl(229, 33%, 83%);
+}
