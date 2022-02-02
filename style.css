@@ -45,6 +45,15 @@ main {
   background-color: #ecf2f8;
 }
 
+@media screen and (max-width: 50rem) {
+  main {
+    min-height: unset;
+    height: auto;
+    margin-top: 4.625rem;
+    margin-bottom: 6rem;
+  }
+}
+
 .card {
   width: 45.75rem;
   height: 17.75rem;
@@ -54,6 +63,15 @@ main {
       grid-template-columns: 17.75rem 1fr;
   border-radius: 12px;
   background-color: white;
+}
+
+@media screen and (max-width: 50rem) {
+  .card {
+    width: 86.7%;
+    height: auto;
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
 }
 
 .card .thumbnail {
@@ -66,8 +84,21 @@ main {
   border-radius: 12px 0px 0px 12px;
 }
 
+@media screen and (max-width: 50rem) {
+  .card .thumbnail {
+    width: 100%;
+  }
+}
+
 .card .content {
   padding: 2.25rem 2.5rem 0 2.25rem;
+}
+
+@media screen and (max-width: 50rem) {
+  .card .content {
+    padding-bottom: 1.5rem;
+    position: relative;
+  }
 }
 
 .card h1 {
@@ -100,6 +131,12 @@ main {
           align-items: center;
 }
 
+@media screen and (max-width: 50rem) {
+  .card .author-and-share {
+    margin-top: 1.875rem;
+  }
+}
+
 .card .author {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -129,6 +166,12 @@ main {
   position: relative;
 }
 
+@media screen and (max-width: 50rem) {
+  .card .share {
+    position: static;
+  }
+}
+
 .card .share .share-button {
   border: none;
   width: 2.125rem;
@@ -138,39 +181,33 @@ main {
 }
 
 .card .share .share-button.active {
-  background-color: #6E8098;
+  background-color: #6e8098;
 }
 
 .card .share .share-button.active path {
   fill: white;
 }
 
-.card .share .pop-over-modal {
+@media screen and (max-width: 50rem) {
+  .card .share .share-button.active {
+    position: absolute;
+    z-index: 999;
+    right: 2.25rem;
+    bottom: 0.9375rem;
+  }
+}
+
+.card .share .pop-over {
   display: none;
 }
 
-.card .share .pop-over-modal.active {
+.card .share .pop-over.active {
   display: block;
   position: absolute;
   width: 15.5rem;
   height: 3.5rem;
   bottom: 3.875rem;
   left: -6.6875rem;
-}
-
-.card .share .pop-over-modal.active .pop-over-backdrop {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100vh;
-  background-color: transparent;
-  z-index: 1;
-}
-
-.card .share .pop-over-modal.active .pop-over {
-  width: 100%;
-  height: 100%;
   border-radius: 12px;
   background-color: #48556a;
   display: -webkit-box;
@@ -183,11 +220,24 @@ main {
       -ms-flex-align: center;
           align-items: center;
   gap: 0.875rem;
-  position: relative;
   z-index: 2;
 }
 
-.card .share .pop-over-modal.active .pop-over .text {
+@media screen and (max-width: 50rem) {
+  .card .share .pop-over.active {
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    height: 4rem;
+    border-radius: 0 0 12px 12px;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    padding-left: 2.25rem;
+  }
+}
+
+.card .share .pop-over.active .text {
   text-transform: uppercase;
   color: #9eafc2;
   font-weight: 500;
@@ -196,7 +246,7 @@ main {
   margin-right: 0.25rem;
 }
 
-.card .share .pop-over-modal.active .pop-over .triangle {
+.card .share .pop-over.active .triangle {
   position: absolute;
   background-color: #48556a;
   -webkit-transform: rotate(45deg);
@@ -204,4 +254,10 @@ main {
   width: 1.0625rem;
   height: 1.0625rem;
   bottom: -0.53125rem;
+}
+
+@media screen and (max-width: 50rem) {
+  .card .share .pop-over.active .triangle {
+    display: none;
+  }
 }

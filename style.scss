@@ -3,11 +3,15 @@ $desaturated-dark-blue: hsl(214, 17%, 51%);
 $grayish-blue: hsl(212, 23%, 69%);
 $light-grayish-blue: hsl(210, 46%, 95%);
 
-
-
 @function rem($px) {
   $html-font-size: 16;
   @return #{$px / $html-font-size}rem;
+}
+
+@mixin media-mobile {
+  @media screen and (max-width: rem(800)) {
+    @content;
+  }
 }
 
 @mixin size($width, $height) {
@@ -45,6 +49,13 @@ main {
   justify-content: center;
   align-items: center;
   background-color: $light-grayish-blue;
+
+  @include media-mobile(){
+    min-height: unset;
+    height: auto;
+    margin-top: rem(74);
+    margin-bottom: rem(96);
+  }
 }
 
 .card {
@@ -54,26 +65,38 @@ main {
   border-radius: 12px;
   background-color: white;
 
+  @include media-mobile() {
+    @include size(86.7%, auto);
+    grid-template-columns: 1fr;
+  }
 
   .thumbnail {
     @include size(rem(284), rem(284));
     object-fit: cover;
     object-position: left top;
     border-radius: 12px 0px 0px 12px;
+
+    @include media-mobile() {
+      width: 100%;
+    }
   }
 
-  .content{
-    padding: rem(36) rem(40) 0 rem(36);    
+  .content {
+    padding: rem(36) rem(40) 0 rem(36);
+    @include media-mobile() {
+      padding-bottom: rem(24);
+      position: relative;
+    }
   }
 
-  h1{
+  h1 {
     color: $very-dark-grayish-blue;
     font-size: rem(20);
     font-weight: 700;
     line-height: 1.35;
   }
 
-  p{
+  p {
     color: $desaturated-dark-blue;
     font-size: rem(13);
     line-height: 1.5;
@@ -81,104 +104,114 @@ main {
     margin-top: rem(15);
   }
 
-  .author-and-share{
+  .author-and-share {
     @include size(100%, rem(40));
     margin-top: rem(20);
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @include media-mobile() {
+      margin-top: rem(30);
+    }
   }
 
-  .author{
+  .author {
     display: flex;
     gap: rem(14);
   }
 
-  .author .avatar{
+  .author .avatar {
     @include size(rem(40), auto);
-    border-radius: 50%;  
+    border-radius: 50%;
   }
 
-  .author .name{
+  .author .name {
     font-size: rem(13);
     color: $very-dark-grayish-blue;
     font-weight: 700;
   }
 
-  .author .date{
+  .author .date {
     font-size: rem(13);
     font-weight: 500;
     color: $desaturated-dark-blue;
   }
 
-  .share{
+  .share {
     position: relative;
+    @include media-mobile(){
+      position: static;
+    }    
   }
 
-  .share .share-button{    
+  .share .share-button {
     border: none;
     @include size(rem(34), rem(34));
     border-radius: 50%;
     cursor: pointer;
+   
   }
 
-  .share .share-button.active{
-    background-color: #6E8098;
+  .share .share-button.active {
+    background-color: #6e8098;
     path {
       fill: white;
-    }   
+    }
+    @include media-mobile(){
+      position: absolute;
+      z-index: 999;
+      right: rem(36);
+      bottom: rem(15); 
+    }
   }
 
-  .share .pop-over-modal{
+  .share .pop-over {
     display: none;
   }
 
-  .share .pop-over-modal.active{
+  .share .pop-over.active {
     display: block;
-    position: absolute;   
-    @include size(rem(248), rem(56)); 
+    position: absolute;
+    @include size(rem(248), rem(56));
     bottom: rem(62);
-    left: -#{rem(107)};    
+    left: -#{rem(107)};
+    border-radius: 12px;
+    background-color: $very-dark-grayish-blue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: rem(14);
+    z-index: 2;
 
-    .pop-over-backdrop{
-      position: fixed;
-      top: 0;
-      left: 0;
-      @include size(100%, 100vh);
-      background-color: transparent;   
-      z-index: 1;  
+    @include media-mobile(){
+      bottom: 0px;
+      left: 0px;
+      @include size(100%, rem(64));
+      border-radius: 0 0 12px 12px;
+      justify-content: flex-start;
+      padding-left: rem(36);
     }
 
-    .pop-over{
-      @include size(100%, 100%);
-      border-radius: 12px;
+    .text {
+      text-transform: uppercase;
+      color: $grayish-blue;
+      font-weight: 500;
+      font-size: rem(13);
+      letter-spacing: rem(4);
+      margin-right: rem(4);
+    }
+
+    .triangle {
+      position: absolute;
       background-color: $very-dark-grayish-blue;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: rem(14);
-      position: relative;
-      z-index: 2;
+      transform: rotate(45deg);
+      @include size(rem(17), rem(17));
+      bottom: -#{rem(8.5)};
 
-      .text{
-        text-transform: uppercase;
-        color: $grayish-blue;
-        font-weight: 500;
-        font-size: rem(13);
-        letter-spacing: rem(4);
-        margin-right: rem(4);
+      @include media-mobile() {
+        display: none;
       }
-
-      .triangle{
-        position: absolute;
-        background-color: $very-dark-grayish-blue;
-        transform: rotate(45deg);
-        @include size(rem(17), rem(17));       
-        bottom: -#{rem(8.5)};
-      }
-
     }
-
   }
-
 }

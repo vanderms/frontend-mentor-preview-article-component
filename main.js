@@ -1,14 +1,20 @@
+const share = document.querySelector('.share');
 const shareButton = document.querySelector('.share-button');
-const modal = document.querySelector('.pop-over-modal');
-const backdrop = modal.querySelector('.pop-over-backdrop');
+const popover = document.querySelector('.pop-over');
+
 
 shareButton.addEventListener('click', () => {
-  shareButton.classList.add('active');
-  modal.classList.add('active');
+  shareButton.classList.toggle('active');
+  popover.classList.toggle('active');
 });
 
-backdrop.addEventListener('click', () => {
- 
-  shareButton.classList.remove('active');
-  modal.classList.remove('active');
+window.addEventListener('click', e => {
+  if (!isInside(e.target, share)) {
+    shareButton.classList.remove('active');
+    popover.classList.remove('active');
+  }
 });
+
+function isInside(elem, target) {
+  return elem && (elem === target || isInside(elem.parentNode, target));
+}
