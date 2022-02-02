@@ -50,7 +50,7 @@ main {
   align-items: center;
   background-color: $light-grayish-blue;
 
-  @include media-mobile(){
+  @include media-mobile() {
     min-height: unset;
     height: auto;
     margin-top: rem(74);
@@ -140,9 +140,9 @@ main {
 
   .share {
     position: relative;
-    @include media-mobile(){
+    @include media-mobile() {
       position: static;
-    }    
+    }
   }
 
   .share .share-button {
@@ -150,7 +150,6 @@ main {
     @include size(rem(34), rem(34));
     border-radius: 50%;
     cursor: pointer;
-   
   }
 
   .share .share-button.active {
@@ -158,11 +157,11 @@ main {
     path {
       fill: white;
     }
-    @include media-mobile(){
+    @include media-mobile() {
       position: absolute;
       z-index: 999;
       right: rem(36);
-      bottom: rem(15); 
+      bottom: rem(15);
     }
   }
 
@@ -184,7 +183,7 @@ main {
     gap: rem(14);
     z-index: 2;
 
-    @include media-mobile(){
+    @include media-mobile() {
       bottom: 0px;
       left: 0px;
       @include size(100%, rem(64));
