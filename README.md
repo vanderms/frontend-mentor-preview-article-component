@@ -14,6 +14,6 @@ This is my solution to the challenge[Article Preview Component](https://www.fron
 
 ### Link
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: <https://www.frontendmentor.io/solutions/html-scss-js-e_x7nvWrM>
+- Live Site URL: <https://vanderms.github.io/frontend-mentor-preview-article-component/>
 
